@@ -127,11 +127,18 @@
                         <img src="https://i.imgur.com/GZzpzRQ.png" alt="Figura: Bases conceituais da APS" class="max-w-full h-auto rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300">
                     </div>
                 </div>
+                
+                <!-- Botão de Avançar 1 -->
+                <div class="mt-10 pt-6 border-t border-slate-100 flex justify-end" id="container-btn-2">
+                    <button id="btn-avancar-2" class="inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white transition-all duration-300 bg-sus-blue rounded-full hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sus-blue">
+                        Avançar para Atividade 2 <i class="fa-solid fa-arrow-down ml-3"></i>
+                    </button>
+                </div>
             </div>
         </section>
 
         <!-- SESSÃO 2 -->
-        <section id="sessao2" class="reveal bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <section id="sessao2" class="reveal hidden bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
             <div class="bg-sus-lightblue px-8 py-5 border-b border-blue-100 flex items-center gap-4">
                 <div class="bg-blue-200 text-sus-blue w-12 h-12 flex items-center justify-center rounded-full text-xl font-bold shadow-sm">2</div>
                 <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">Organização e estruturação da APS</h2>
@@ -141,14 +148,21 @@
                 <p class="text-slate-600 mb-6 text-lg"><i class="fa-brands fa-youtube text-red-500 mr-2"></i> Acompanhe o vídeo explicativo sobre a organização estrutural:</p>
                 
                 <!-- Video Embed -->
-                <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100">
+                <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100 mb-10">
                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/eumSkX9cDwI" title="Organização e estruturação da APS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <!-- Botão de Avançar 2 -->
+                <div class="mt-10 pt-6 border-t border-slate-100 flex justify-end" id="container-btn-3">
+                    <button id="btn-avancar-3" class="inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white transition-all duration-300 bg-amber-500 rounded-full hover:bg-amber-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+                        Avançar para Atividade 3 <i class="fa-solid fa-arrow-down ml-3"></i>
+                    </button>
                 </div>
             </div>
         </section>
 
         <!-- SESSÃO 3 -->
-        <section id="sessao3" class="reveal bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <section id="sessao3" class="reveal hidden bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
             <div class="bg-amber-50 px-8 py-5 border-b border-amber-100 flex items-center gap-4">
                 <div class="bg-amber-200 text-amber-800 w-12 h-12 flex items-center justify-center rounded-full text-xl font-bold shadow-sm">3</div>
                 <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">Avaliação e mensuração dos resultados</h2>
@@ -275,6 +289,79 @@
             window.addEventListener('scroll', revealOnScroll);
             // Trigger once on load
             revealOnScroll();
+
+            // Lógica de Sequência (Avançar)
+            const sessao2 = document.getElementById('sessao2');
+            const sessao3 = document.getElementById('sessao3');
+            const btn2 = document.getElementById('btn-avancar-2');
+            const btn3 = document.getElementById('btn-avancar-3');
+            const containerBtn2 = document.getElementById('container-btn-2');
+            const containerBtn3 = document.getElementById('container-btn-3');
+
+            const mostrarSessao = (sessao, btnContainer) => {
+                // Remover ocultação da sessão
+                sessao.classList.remove('hidden');
+                // Ocultar o botão que acabou de ser clicado
+                if (btnContainer) btnContainer.classList.add('hidden');
+                
+                // Pequeno atraso para a classe hidden sair do DOM antes de aplicar a animação de entrada
+                setTimeout(() => {
+                    sessao.classList.add('active');
+                    
+                    // Ajustar rolagem suave considerando a altura do menu fixo (offset) no topo
+                    const offset = 80;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = sessao.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 50);
+            };
+
+            if(btn2) {
+                btn2.addEventListener('click', () => mostrarSessao(sessao2, containerBtn2));
+            }
+            if(btn3) {
+                btn3.addEventListener('click', () => mostrarSessao(sessao3, containerBtn3));
+            }
+
+            // Lógica inteligente para links do Navbar navegarem mesmo se a sessão ainda estiver oculta
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetEl = document.getElementById(targetId);
+
+                    // Desbloqueia sessões dependendo do link clicado
+                    if (targetId === 'sessao2') {
+                        sessao2.classList.remove('hidden');
+                        if (containerBtn2) containerBtn2.classList.add('hidden');
+                    } else if (targetId === 'sessao3') {
+                        sessao2.classList.remove('hidden');
+                        sessao3.classList.remove('hidden');
+                        if (containerBtn2) containerBtn2.classList.add('hidden');
+                        if (containerBtn3) containerBtn3.classList.add('hidden');
+                    }
+
+                    setTimeout(() => {
+                        targetEl.classList.add('active');
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementRect = targetEl.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 50);
+                });
+            });
 
             // Toggle Bibliografia
             const btnBibliografia = document.getElementById('btn-bibliografia');
