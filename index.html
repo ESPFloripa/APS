@@ -118,7 +118,7 @@
                 
                 <!-- Video Embed -->
                 <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100 mb-10">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/nTNO0KjYz3Q" title="Bases conceituais da APS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/gh-sDitqdFo" title="Bases conceituais da APS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
                 <div class="mt-8">
@@ -142,7 +142,7 @@
                 
                 <!-- Video Embed -->
                 <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/FwG0iu98cU4" title="Organização e estruturação da APS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/eumSkX9cDwI" title="Organização e estruturação da APS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -163,9 +163,9 @@
                     </p>
                 </div>
 
-                <!-- Image PCATool -->
-                <div class="flex justify-center mb-10 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                    <img src="https://i.imgur.com/3BMp7k4.png" alt="Figura: Mensuração e Resultados PCATool" class="max-w-full h-auto rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300">
+                <!-- Video Embed PCATool -->
+                <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100 mb-10">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/zGKPwtJQNpQ" title="Avaliação e mensuração dos resultados com PCATool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
                 <!-- Exercise Context Box -->
@@ -207,13 +207,20 @@
             </div>
         </section>
 
-        <!-- Seção de Bibliografia -->
+        <!-- Seção de Leitura e Bibliografia -->
         <section class="max-w-4xl mx-auto text-center mt-8 reveal">
-            <button id="btn-bibliografia" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-slate-700 transition-all duration-300 bg-white border border-slate-300 rounded-full hover:bg-slate-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200">
-                <i class="fa-solid fa-book-bookmark mr-3 text-slate-500"></i>
-                Acesse a Bibliografia Utilizada
-                <i class="fa-solid fa-chevron-down ml-3 text-slate-400 transition-transform duration-300" id="icone-bibliografia"></i>
-            </button>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://drive.google.com/file/d/13kNOgZ_TNsOok5gBTcoXRWmXgTfSc3sY/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-slate-700 transition-all duration-300 bg-white border border-slate-300 rounded-full hover:bg-slate-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 w-full sm:w-auto">
+                    <i class="fa-solid fa-book-open-reader mr-3 text-sus-blue"></i>
+                    Leitura Complementar (opcional)
+                </a>
+
+                <button id="btn-bibliografia" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-slate-700 transition-all duration-300 bg-white border border-slate-300 rounded-full hover:bg-slate-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 w-full sm:w-auto">
+                    <i class="fa-solid fa-book-bookmark mr-3 text-slate-500"></i>
+                    Acesse a Bibliografia Utilizada
+                    <i class="fa-solid fa-chevron-down ml-3 text-slate-400 transition-transform duration-300" id="icone-bibliografia"></i>
+                </button>
+            </div>
 
             <div id="conteudo-bibliografia" class="hidden mt-6 text-left bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm transition-all duration-500 opacity-0 transform -translate-y-4">
                 <h3 class="text-xl font-bold text-slate-800 mb-4 border-b border-slate-100 pb-3 flex items-center gap-2">
